@@ -111,6 +111,12 @@ func (ft *FieldType) Init(tp byte) {
 	ft.Decimal = UnspecifiedLength
 }
 
+//Get column type without FieldLenght and Decimal
+//
+func (ft *FieldType) GetTypeStr() string {
+	return TypeToStr(ft.Tp, ft.Charset)
+}
+
 // CompactStr only considers Tp/CharsetBin/Flen/Deimal.
 // This is used for showing column type in infoschema.
 func (ft *FieldType) CompactStr() string {
